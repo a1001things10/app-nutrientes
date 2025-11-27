@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 // Import all available fonts for AI usage
 import "../lib/fonts";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,10 +35,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="bg-white shadow p-4 flex justify-center">
-          <img src="https://k6hrqrxuu8obbfwn.public.blob.vercel-storage.com/temp/3a0c8d78-3073-4829-882a-5202ca86debb.jpg" alt="Logo" className="h-12 w-auto" />
-        </header>
-        {children}
+        <LanguageProvider>
+          <header className="bg-white shadow p-4 flex justify-center">
+            <img src="https://k6hrqrxuu8obbfwn.public.blob.vercel-storage.com/temp/3a0c8d78-3073-4829-882a-5202ca86debb.jpg" alt="Logo" className="h-12 w-auto" />
+          </header>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
